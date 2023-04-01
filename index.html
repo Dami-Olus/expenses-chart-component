@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Expenses chart component</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+      body {
+        background-color: #f7e9dcff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      .expense-chart-component {
+      }
+      .balance-card {
+        background-color: #ec755dff;
+        height: auto;
+        padding: 10px;
+        color: #fffcf7ff;
+        border-radius: 10px;
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: space-between;
+      }
+      .balance-card-left {
+        display: flex;
+        flex-direction: column;
+        margin-left: 8px;
+      }
+      .balance-card-left-text {
+        font-size: 11px;
+        font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+          "Lucida Sans", Arial, sans-serif;
+      }
+      .balance-card-left-amount {
+        font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+          "Lucida Sans", Arial, sans-serif;
+        margin-top: 7px;
+        font-weight: 600;
+        font-size: 15px;
+      }
+      .balance-card-right {
+      }
+      .balance-card-right img {
+        width: 40px;
+        padding: 10px;
+      }
+      .dashboardCard {
+        background-color: #fffcf7ff;
+        border-radius: 10px;
+        width: auto;
+        height: 240px;
+      }
+      .dashboardCard-title {
+        padding-top: 10px;
+        margin-left: 20px;
+        font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+          "Lucida Sans", Arial, sans-serif;
+        color: #372315;
+        font-weight: bold;
+      }
+      .dashboardCard-graph {
+        width: 201px;
+        margin-left: 20px;
+      }
+
+      hr {
+        margin-left: 25px;
+        margin-right: 25px;
+        height: 1px;
+        background-color: lightgray;
+        border: none;
+        margin-bottom: 16px;
+      }
+      .dashboardCard-summary {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 25px;
+      }
+      .dashboardCard-summary-left,
+      .dashboardCard-summary-right {
+        display: flex;
+        flex-direction: column;
+      }
+      .dashboardCard-summary-left {
+        margin-left: 25px;
+      }
+      .dashboardCard-summary-left-text {
+        font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+          "Lucida Sans", Arial, sans-serif;
+        font-size: 8px;
+        color: #bab5b1;
+        margin-bottom: 4px;
+      }
+      .dashboardCard-summary-left-amount {
+        font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+          "Lucida Sans", Arial, sans-serif;
+        font-size: 20px;
+        font-weight: bold;
+      }
+      .dashboardCard-summary-right {
+        margin-right: 25px;
+        margin-top: 15px;
+      }
+      .dashboardCard-summary-right-percentage {
+        font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+          "Lucida Sans", Arial, sans-serif;
+        font-size: 11px;
+        font-weight: bold;
+        text-align: right;
+      }
+      .dashboardCard-summary-right-text {
+        font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+          "Lucida Sans", Arial, sans-serif;
+        font-size: 8px;
+        color: #bab5b1;
+        margin-bottom: 4px;
+      }
+
+      /* linen: #F7E9DCff;cream
+      --burnt-sienna: #EC755Dff;orange
+      --baby-powder: #FFFCF7ff;white
+      --bistre: #341F13ff;
+      --moonstone: #76B5BCff; blue
+      --timberwolf: #E1DED7ff;
+      BAB5B1 gray
+      372315 brownblack
+      */
+    </style>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+  </head>
+  <body>
+    <div class="expense-chart-component">
+      <div class="balance-card">
+        <div class="balance-card-left">
+          <div class="balance-card-left-text">My balance</div>
+          <div class="balance-card-left-amount">$921.48</div>
+        </div>
+        <div class="balance-card-right">
+          <img src="images/logo.svg" alt="" />
+        </div>
+      </div>
+
+      <div class="dashboardCard">
+        <div class="dashboardCard-title">Spending - Last 7 days</div>
+
+        <div class="dashboardCard-graph"></div>
+
+        <hr />
+
+        <div class="dashboardCard-summary">
+          <div class="dashboardCard-summary-left">
+            <div class="dashboardCard-summary-left-text">Total this month</div>
+            <div class="dashboardCard-summary-left-amount">$478.33</div>
+          </div>
+
+          <div class="dashboardCard-summary-right">
+            <div class="dashboardCard-summary-right-percentage">+2.4%</div>
+            <div class="dashboardCard-summary-right-text">from last month</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="attribution">
+        Challenge by
+        <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+          >Frontend Mentor</a
+        >. Coded by <a href="#">Your Name Here</a>.
+      </div>
+    </div>
+
+    <!-- <div>
+      <canvas id="myChart"></canvas>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+      const ctx = document.getElementById("myChart");
+
+      new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+          datasets: [
+            {
+              label: "# of Votes",
+              data: [12, 19, 3, 5, 2, 3],
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true,
+            },
+          },
+        },
+      });
+    </script> -->
+    <script>
+      async function getData() {
+        let response = await fetch("data.json");
+        info = await response.json();
+
+        console.log(info);
+
+        const svg = d3
+          .select(".dashboardCard-graph")
+          .append("svg")
+          .attr("width", 230)
+          .attr("height", 125);
+
+        svg
+          .selectAll("rect")
+          .data(info)
+          .enter()
+          .append("rect")
+          .attr("fill", "#EC755Dff")
+          .attr("x", (d, i) => i * 33)
+          .attr("y", (d) => 100 - d.amount * 1.5)
+          .attr("width", 25)
+          .attr("height", (d) => d.amount * 1.5)
+          .attr("rx", 3)
+          .attr("ry", 3)
+          .style("cursor", "pointer")
+          .on("mouseover", function () {
+            d3.select(this)
+              .transition()
+              .duration("200")
+              .attr("fill", "#76B5BCff");
+          })
+          .on("mouseout", function () {
+            d3.select(this)
+              .transition()
+              .duration("200")
+              .attr("fill", "#EC755Dff");
+          });
+
+        svg
+          .selectAll("text")
+          .data(info)
+          .enter()
+          // Add your code below this line
+          .append("text")
+          .attr("x", (d, i) => (i + 0.19) * 33)
+          .attr("y", (d) => 115)
+          .text((d) => d.day)
+          .style("font-size", "10px")
+          .style("fill", "#BAB5B1");
+      }
+
+      getData();
+    </script>
+  </body>
+</html>
